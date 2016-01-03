@@ -20,5 +20,6 @@ public class Solution {
             } while(startIndex < length);
             System.out.print(" ");
         }
+        stdin.close();
     }
 }

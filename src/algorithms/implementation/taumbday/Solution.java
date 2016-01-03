@@ -26,5 +26,6 @@ public class Solution {
                 cost = whitePrice * whiteGift + blackPrice * blackGift;
             System.out.println(cost);
         }
+        stdin.close();
     }
 }

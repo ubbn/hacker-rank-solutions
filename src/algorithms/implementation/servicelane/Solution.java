@@ -28,5 +28,6 @@ public class Solution {
 
             System.out.println(vehicleWidth);
         }
+        stdin.close();
     }
 }

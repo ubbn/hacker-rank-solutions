@@ -17,5 +17,6 @@ public class Solution {
         int b = in.nextInt();
         int sum = solveMeFirst(a, b);
         System.out.println(sum);
+        in.close();
     }
 }

@@ -21,5 +21,6 @@ public class Solution {
             }
             System.out.println(treeLength);
         }
+        stdin.close();
     }
 }

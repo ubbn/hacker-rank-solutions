@@ -15,7 +15,7 @@ public class Solution {
         Date time = format.parse(stdin.next());
 
         System.out.println(new SimpleDateFormat("HH:mm:ss").format(time));
-
+        stdin.close();
     }
 
 }

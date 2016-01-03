@@ -65,5 +65,6 @@ public class Solution {
 
             System.out.println(numberNames[hour]);
         }
+        stdin.close();
     }
 }

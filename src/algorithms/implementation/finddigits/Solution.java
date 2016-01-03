@@ -23,6 +23,6 @@ public class Solution {
 
             System.out.println(count);
         }
-
+        stdin.close();
     }
 }

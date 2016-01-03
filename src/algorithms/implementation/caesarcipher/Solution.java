@@ -26,6 +26,6 @@ public class Solution {
             else
                 System.out.print((char)ascii);
         }
-
+        stdin.close();
     }
 }

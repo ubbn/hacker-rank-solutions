@@ -24,5 +24,6 @@ public class Solution {
             else
                 System.out.println("YES");
         }
+        stdin.close();
     }
 }

@@ -18,5 +18,6 @@ public class Solution {
             }
             System.out.print("\n");
         }
+        stdin.close();
     }
 }

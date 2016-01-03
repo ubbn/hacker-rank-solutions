@@ -21,5 +21,6 @@ public class Solution {
                 System.out.println(numberOfSticks);
                 numberOfSticks -= count[i];
             }
+        stdin.close();
     }
 }

@@ -27,5 +27,6 @@ public class Solution {
         PrintOutput(counterPos, totalNumber);
         PrintOutput(counterNeg, totalNumber);
         PrintOutput(totalNumber - counterPos - counterNeg, totalNumber);
+        stdin.close();
     }
 }

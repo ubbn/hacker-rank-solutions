@@ -26,6 +26,7 @@ public class Solution {
                 System.out.print(-1);
             System.out.println();
         }
+        stdin.close();
     }
 
 }

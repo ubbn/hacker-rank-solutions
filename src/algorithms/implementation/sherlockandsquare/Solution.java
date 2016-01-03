@@ -16,5 +16,6 @@ public class Solution {
 
             System.out.println((int)(Math.floor(Math.sqrt(numEnd)) - Math.ceil(Math.sqrt(numStart)) + 1));
         }
+        stdin.close();
     }
 }

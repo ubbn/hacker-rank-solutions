@@ -25,5 +25,6 @@ public class Solution {
 
             System.out.println(money / price + calculateChocolates(money / price));
         }
+        stdin.close();
     }
 }

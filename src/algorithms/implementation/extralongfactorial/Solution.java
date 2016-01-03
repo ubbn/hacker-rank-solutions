@@ -17,5 +17,6 @@ public class Solution {
         Scanner stdin = new Scanner(System.in);
         int number = stdin.nextInt();
         System.out.println(Factorial(number));
+        stdin.close();
     }
 }
