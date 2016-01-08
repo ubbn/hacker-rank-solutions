@@ -25,7 +25,7 @@ public class Solution {
 
                 int rowLen = col - 2 * layer;
                 int colLen = row - 2 * layer;
-                int remainder = rotate % ((colLen + rowLen) * 2);
+                int remainder = rotate % ((colLen + rowLen - 2) * 2);
 
                 // UP
                 if (r < row/2 && layer == r){
@@ -42,7 +42,7 @@ public class Solution {
                     if (colLen > remainder-d-colLen-rowLen+2)
                         System.out.print(matrix[row-1-layer-(remainder-d-colLen-rowLen+2)][layer] + " ");
                     else
-                        System.out.print(matrix[r][layer+(remainder-d-2*colLen-rowLen)] + " ");
+                        System.out.print(matrix[r][layer+(remainder-d-2*colLen-rowLen+3)] + " ");
                 }
                 // LEFT
                 else if (c < col/2 && layer == c){
@@ -50,16 +50,16 @@ public class Solution {
                     if (d >= remainder)
                         System.out.print(matrix[r-remainder][c] + " ");
                     else
-                    if (rowLen >= remainder-d)
+                    if (rowLen > remainder-d)
                         System.out.print(matrix[layer][layer+remainder-d] + " ");
                     else
-                    if (colLen >= remainder-d-rowLen)
-                        System.out.print(matrix[layer+remainder-d-rowLen][col-1-layer] + " ");
+                    if (colLen > remainder-d-rowLen+1)
+                        System.out.print(matrix[layer+remainder-d-rowLen+1][col-1-layer] + " ");
                     else
-                    if (rowLen >= remainder-d-rowLen-colLen)
-                        System.out.print(matrix[row-1-layer][col-1-layer-(remainder-d-colLen-rowLen)] + " ");
+                    if (rowLen > remainder-d-rowLen-colLen+2)
+                        System.out.print(matrix[row-1-layer][col-1-layer-(remainder-d-colLen-rowLen+2)] + " ");
                     else
-                        System.out.print(matrix[row-1-layer-(remainder-d-colLen-2*rowLen)][c] + " ");
+                        System.out.print(matrix[row-1-layer-(remainder-d-colLen-2*rowLen+3)][c] + " ");
                 }
                 // DOWN
                 else if (r >= row/2 && layer == row-1 - r){
@@ -67,16 +67,16 @@ public class Solution {
                     if (d >= remainder)
                         System.out.print(matrix[r][c-remainder] + " ");
                     else
-                    if (colLen >= remainder-d)
+                    if (colLen > remainder-d)
                         System.out.print(matrix[row-1-layer-(remainder-d)][layer] + " ");
                     else
-                    if (rowLen >= remainder-d-colLen)
-                        System.out.print(matrix[layer][layer+(remainder-d-colLen)] + " ");
+                    if (rowLen > remainder-d-colLen+1)
+                        System.out.print(matrix[layer][layer+(remainder-d-colLen+1)] + " ");
                     else
-                    if (colLen >= remainder-d-colLen-rowLen)
-                        System.out.print(matrix[layer+(remainder-d-colLen-rowLen)][col-1-layer] + " ");
+                    if (colLen > remainder-d-colLen-rowLen+2)
+                        System.out.print(matrix[layer+(remainder-d-colLen-rowLen+2)][col-1-layer] + " ");
                     else
-                        System.out.print(matrix[r][col-1-layer-(remainder-d-2*colLen-rowLen)] + " ");
+                        System.out.print(matrix[r][col-1-layer-(remainder-d-2*colLen-rowLen+3)] + " ");
                 }
                 // RIGHT
                 else if (c >= col/2 && layer == col-1 - c){
@@ -84,16 +84,16 @@ public class Solution {
                     if (d >= remainder)
                         System.out.print(matrix[r+remainder][c] + " ");
                     else
-                    if (rowLen >= remainder-d)
+                    if (rowLen > remainder-d)
                         System.out.print(matrix[row-1-layer][col-1-layer-(remainder-d)] + " ");
                     else
-                    if (colLen >= remainder-d-rowLen)
-                        System.out.print(matrix[row-1-layer-(remainder-d-rowLen)][layer] + " ");
+                    if (colLen > remainder-d-rowLen+1)
+                        System.out.print(matrix[row-1-layer-(remainder-d-rowLen+1)][layer] + " ");
                     else
-                    if (rowLen >= remainder-d-rowLen-colLen)
-                        System.out.print(matrix[layer][layer+(remainder-d-colLen-rowLen)] + " ");
+                    if (rowLen > remainder-d-rowLen-colLen+2)
+                        System.out.print(matrix[layer][layer+(remainder-d-colLen-rowLen+2)] + " ");
                     else
-                        System.out.print(matrix[layer+(remainder-d-colLen-2*rowLen)][c] + " ");
+                        System.out.print(matrix[layer+(remainder-d-colLen-2*rowLen+3)][c] + " ");
                 }
             }
             System.out.println();
