@@ -18,7 +18,7 @@ public class Solution {
         Scanner stdin = new Scanner(System.in);
         int testCases = stdin.nextInt();
 
-        for (int i = 0; i < testCases; i++) {
+        while(testCases-->0) {
             int money = stdin.nextInt();
             price = stdin.nextInt();
             wrappersFor1Choc = stdin.nextInt();

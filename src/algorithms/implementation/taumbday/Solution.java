@@ -9,7 +9,7 @@ public class Solution {
     public static void main(String[] args) {
         Scanner stdin = new Scanner(System.in);
         int testCases = stdin.nextByte();
-        for (int i = 0; i < testCases; i++) {
+        while(testCases-->0) {
             long blackGift = stdin.nextLong();
             long whiteGift = stdin.nextLong();
             long blackPrice = stdin.nextLong();

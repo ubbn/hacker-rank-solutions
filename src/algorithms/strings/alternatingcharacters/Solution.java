@@ -26,7 +26,7 @@ public class Solution {
         Scanner stdin = new Scanner(System.in);
         int testCases = stdin.nextInt();
 
-        for (int i = 0; i < testCases; i++)
+        while(testCases-->0)
             System.out.println(findMinDeletion(stdin.next()));
     }
 }

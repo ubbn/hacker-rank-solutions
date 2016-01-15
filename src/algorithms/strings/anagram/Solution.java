@@ -28,7 +28,7 @@ public class Solution {
     public static void main(String[] args) {
         Scanner stdin = new Scanner(System.in);
         int testCases = stdin.nextInt();
-        for (int i = 0; i < testCases; i++)
+        while(testCases-->0)
             processWord(stdin.next());
     }
 }

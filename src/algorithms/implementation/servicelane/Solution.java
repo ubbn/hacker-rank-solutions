@@ -16,7 +16,7 @@ public class Solution {
             segments[j] = stdin.nextInt();
         }
 
-        for (int i = 0; i < testCases; i++) {
+        while(testCases-->0) {
             int entry = stdin.nextInt();
             int exit = stdin.nextInt();
 

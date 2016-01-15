@@ -10,7 +10,7 @@ public class Solution {
         Scanner stdin = new Scanner(System.in);
         byte testCases = stdin.nextByte();
         TestCases:
-        for (int i = 0; i < testCases; i++) {
+        while(testCases-->0) {
             int rowsBig = stdin.nextInt();
             int colsBig = stdin.nextInt();
             char matrixBig[][] = new char[rowsBig][colsBig];
