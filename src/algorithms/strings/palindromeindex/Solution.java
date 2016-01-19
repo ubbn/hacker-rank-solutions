@@ -18,13 +18,16 @@ public class Solution {
     }
 
     private static int getPalindromeIndex(String word) {
-        int index = -1;
-        if (isPalindrome(word))
-            return index;
-
-        while(++index < word.length()) {
-            if (isPalindrome(word.substring(0,index) + word.substring(index+1)))
-                return index;
+        int len = word.length();
+        int i = 0;
+        while (word.charAt(i) == word.charAt(len-1-i) && i < len/2) {
+            i++;
+        }
+        if (i < len/2){
+            if (isPalindrome(word.substring(i, len-1-i)))
+                return len - 1 - i;
+            if (isPalindrome(word.substring(i+1, len-i)))
+                return i;
         }
 
         return -1;
