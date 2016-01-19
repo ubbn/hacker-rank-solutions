@@ -19,12 +19,12 @@ public class Solution {
 
     private static int getPalindromeIndex(String word) {
         int index = -1;
+        if (isPalindrome(word))
+            return index;
 
-        String tempStr = word;
-        while(index < word.length()) {
-            if (isPalindrome(tempStr))
+        while(++index < word.length()) {
+            if (isPalindrome(word.substring(0,index) + word.substring(index+1)))
                 return index;
-            tempStr = (new StringBuilder(word)).deleteCharAt(++index).toString();
         }
 
         return -1;
