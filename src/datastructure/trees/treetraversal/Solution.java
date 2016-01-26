@@ -65,5 +65,40 @@ public class Solution {
         for(int i : queueForRight)
             System.out.print(i + " ");
     }
+    
+    // Task 5
+    void LevelOrder(Node root)
+    {
+        Stack<Node> nodes = new Stack<>();
+        Stack<Integer> levels = new Stack<>();
+        Map<Integer, List<Integer>> nodeData = new TreeMap<>();
+        
+        nodes.push(root);
+        levels.push(1);
+        while(!nodes.isEmpty()){
+            Node node = nodes.pop();
+            int level = levels.pop();
+            
+            if (!nodeData.containsKey(level))
+                nodeData.put(level, new ArrayList<Integer>());
+            nodeData.get(level).add(node.data);    
+            
+            if (node.left != null || node.right != null){
+                level++;
+                if (node.right != null){
+                    nodes.push(node.right);
+                    levels.push(level);
+                }
+                if (node.left != null){
+                    nodes.push(node.left); 
+                    levels.push(level);
+                }
+            }
+        }
+        
+        for(int key : nodeData.keySet())
+            for (int value : nodeData.get(key)) 
+                System.out.print(value + " ");
+    }
 
 }
