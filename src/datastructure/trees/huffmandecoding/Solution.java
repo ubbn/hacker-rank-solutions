@@ -1,4 +1,4 @@
-package datastructure.trees.huffmancoding;
+package datastructure.trees.huffmandecoding;
 
 /**
  * Created by buyan on 1/28/16.
