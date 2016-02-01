@@ -105,6 +105,19 @@ public class Solution {
         return head;
     }
 
+    /*
+      Insert Node at the end of a linked list
+      head pointer input could be NULL as well for empty list
+    */
+
+    void ReversePrint(Node head) {
+        if (head == null)
+            return;
+
+        ReversePrint(head.next);
+        System.out.println(head.data);
+    }
+
 
 
 }
