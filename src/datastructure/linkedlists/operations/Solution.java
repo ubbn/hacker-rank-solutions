@@ -119,6 +119,20 @@ public class Solution {
         System.out.println(head.data);
     }
 
+    /*
+      Reverse a linked list and return pointer to the head
+      The input list will have at least one element  
+    */
+    Node Reverse(Node head) {
+        if (head == null || head.next == null)
+            return head;
+        
+        Node newNode = Reverse(head.next);
+        head.next.next = head;
+        head.next = null;
+        
+        return newNode;  
+    }
 
 
 }
