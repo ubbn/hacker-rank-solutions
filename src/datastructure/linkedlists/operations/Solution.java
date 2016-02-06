@@ -106,8 +106,9 @@ public class Solution {
     }
 
     /*
-      Insert Node at the end of a linked list
-      head pointer input could be NULL as well for empty list
+      Print all its elements in reverse order from tail to head,
+      one element per line. The head pointer may be null meaning
+      that the list is empty - in that case, do not print anything!
     */
 
     void ReversePrint(Node head) {
