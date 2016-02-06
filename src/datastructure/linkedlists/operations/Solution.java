@@ -1,5 +1,7 @@
 package datastructure.linkedlists.operations;
 
+import java.util.Scanner;
+
 /**
  * Created by buyan on 1/30/16.
  */
@@ -134,5 +136,20 @@ public class Solution {
         return newNode;  
     }
 
+    public static void main(String[] args) {
+        Scanner stdin = new Scanner(System.in);
+        int numberOfElements = stdin.nextInt();
 
+        Node head = null;
+        Solution linkedList = new Solution();
+        for (int i = 0; i < numberOfElements; i++) {
+            head = linkedList.Insert(head, stdin.nextInt());
+        }
+
+        linkedList.Print(head);
+
+        // Reverse list and print
+        head = linkedList.Reverse(head);
+        linkedList.Print(head);
+    }
 }

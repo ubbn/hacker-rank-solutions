@@ -1,7 +1,6 @@
 package datastructure.trees.treetraversal;
 
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by buyan on 1/23/16.
