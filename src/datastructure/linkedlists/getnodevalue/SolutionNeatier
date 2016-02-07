@@ -1,0 +1,32 @@
+package datastructure.linkedlists.getnodevalue;
+
+/**
+ * Created by buyan on 2/7/16.
+ */
+
+class Node {
+    int data;
+    Node next;
+}
+
+public class SolutionWithStack {
+  /*
+    Get Nth element from the end in a linked list of integers
+    Number of elements in the list will always be greater than N.
+  */
+      
+  int GetNode(Node head,int n) {
+    int counter = 0;
+    Node pointer = head;
+    Node needed = head;
+    while(pointer != null){
+      pointer = pointer.next;
+      if(counter > n)
+        needed = needed.next;
+      counter++;
+    }
+    
+    return needed.data;
+  }
+
+}
