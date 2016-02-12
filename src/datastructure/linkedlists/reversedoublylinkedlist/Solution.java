@@ -49,8 +49,8 @@ public class Solution {
     }
 
     /*
-      Insert Node at the end of a linked list
-      head pointer input could be NULL as well for empty list
+      Reverse the order of the nodes in the list.
+      The head node might be NULL to indicate that the list is empty.
     */
     Node Reverse(Node head) {
         Node current = head;
@@ -67,6 +67,20 @@ public class Solution {
         return current;
     }
 
+    /*
+      Recursive version of Reverse method
+    */
+    Node ReverseRecursively(Node head) {
+        Node prev = head.prev;
+        head.prev = head.next;
+        head.next = prev;
+
+        if (head.prev != null)
+            return ReverseRecursively(head.prev);
+        else
+            return head;
+    }
+
     public static void main(String[] args) {
         Scanner stdin = new Scanner(System.in);
         int numberOfElements = stdin.nextInt();
@@ -79,8 +93,10 @@ public class Solution {
 
         // print before insert
         linkedList.Print(head);
-
         head = linkedList.Reverse(head);
+
+        linkedList.Print(head);
+        head = linkedList.ReverseRecursively(head);
 
         // print after insert
         linkedList.Print(head);
