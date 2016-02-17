@@ -24,28 +24,82 @@ public class Solution {
             charCount[c-97]++;
         }
 
+        int index = 0;
         int nextIndex = 0;
-        int prevIndex = 0;
-        while(nextIndex < 25){
-            prevIndex = nextIndex;
-            nextIndex = nextIndex(charCount, nextIndex);
-            int difference = charCount[nextIndex] - charCount[nextIndex];
-            if (difference == 1) {
-                int nextIndex2 = nextIndex(charCount, nextIndex);
-                if (nextIndex2 < 24 && charCount[nextIndex2] != 0 && charCount[nextIndex2] - charCount[nextIndex] != -1)
-                    if (nextIndex > 0)
-                        break;
-
-            } else if (difference == -1) {
-                if (nextIndex > 0 && charCount[nextIndex] - charCount[prevIndex] != 1)
-                    if (charCount[i + 1] > 1)
-                        break;
-
-            } else if (Math.abs(difference) > 1)
+        Boolean isOddFound = false;
+        while(index < 25){
+            nextIndex = nextIndex(charCount, index);
+            if (nextIndex == 26)
                 break;
+
+            int difference = charCount[nextIndex] - charCount[index];
+            int nextNextIndex = nextIndex(charCount, nextIndex);
+            if (difference == 1) {
+                if (isOddFound)
+                    break;
+
+                if (nextNextIndex < 26) {
+                    if (charCount[nextNextIndex] - charCount[nextIndex] == 0) {
+                        if (charCount[index] != 1)
+                            break;
+                    }
+                    else if (charCount[nextNextIndex] - charCount[nextIndex] != -1)
+                        break;
+                }
+
+                isOddFound = true;
+            }
+            else if (difference == -1) {
+                if (isOddFound)
+                    break;
+
+                if (nextNextIndex == 26){
+                    if (charCount[nextIndex] != 1)
+                        break;
+                }
+                else{
+                    if (charCount[nextNextIndex] - charCount[nextIndex] == 1) {
+                        if (charCount[nextIndex] != 1)
+                            break;
+                    }
+                    else if (charCount[nextNextIndex] - charCount[nextIndex] == 0){
+                        if (index > 0)
+                            break;
+                    }
+                    else
+                        break;
+                }
+
+                isOddFound = true;
+            }
+            else if (Math.abs(difference) > 1) {
+                if (isOddFound)
+                    break;
+
+                if (difference > 0){
+                    if (index == 0) {
+                        if (charCount[index] != 1)
+                            break;
+                    } else
+                        break;
+                } else{
+                    if (nextNextIndex == 26){
+                        if (charCount[nextIndex] != 1)
+                            break;
+                    } else {
+                        if (charCount[nextIndex] == 1)
+                            if (charCount[nextNextIndex] - charCount[nextIndex] != -difference)
+                                break;
+                    }
+                }
+
+                isOddFound = true;
+            }
+
+            index = nextIndex;
         }
 
-        if (nextIndex >= 25)
+        if (index >= 25 || nextIndex == 26)
             System.out.println("YES");
         else
             System.out.println("NO");
