@@ -6,39 +6,40 @@ import java.util.*;
  * Created by bbn on 2/21/16.
  */
 public class Solution {
-    static void printArray(int[] array, int[] indexes){
-        for (int index : indexes)
-            System.out.print(array[index] + " ");
+    static void printArray(int[] array){
+        for (int value : array)
+            System.out.print(value + " ");
         System.out.println();
     }
 
-    static void partition(int[] data, int[] indexes){
-        Queue<Integer> greaters = new LinkedList<>();
-        int pivot = data[indexes[indexes.length-1]];
+    static int partition(int[] array, int startIndex, int endIndex){
+        int pivot = array[endIndex];
 
-        for (int i = 0; i < indexes.length-1; i++){
-            if (data[indexes[i]] >= pivot)
-                greaters.add(i);
-            else{
-                if (greaters.size() > 0){
-                    int firstGeaterIndex = greaters.poll();
-                    int temp = indexes[i];
-                    indexes[i] = indexes[firstGeaterIndex];
-                    indexes[firstGeaterIndex] = temp;
-                }
+        int pivotIndex = startIndex;
+        for (int i = startIndex; i < endIndex; i++) {
+            if (array[i] <= pivot){
+                int temp = array[pivotIndex];
+                array[pivotIndex] = array[i];
+                array[i] = temp;
 
+                pivotIndex++;
             }
         }
 
-        if (!greaters.isEmpty()){
-            int firstGeaterIndex = greaters.poll();
-            int temp = indexes[indexes.length-1];
-            indexes[indexes.length-1] = indexes[firstGeaterIndex];
-            indexes[firstGeaterIndex] = temp;
+        array[endIndex] = array[pivotIndex];
+        array[pivotIndex] = pivot;
 
-            printArray(data, indexes);
-            partition(data, indexes);
-        }
+        return pivotIndex;
+    }
+
+    static void quickSort(int[] array, int startIndex, int endIndex){
+        if (startIndex >= endIndex)
+            return;
+
+        int pivotIndex = partition(array, startIndex, endIndex);
+        printArray(array);
+        quickSort(array, startIndex, pivotIndex - 1);
+        quickSort(array, pivotIndex + 1, endIndex);
 
     }
 
@@ -46,18 +47,13 @@ public class Solution {
         Scanner stdin = new Scanner(System.in);
         int sizeOfArray = stdin.nextInt();
         int[] numList = new int[sizeOfArray];
-        int[] indexes = new int[sizeOfArray];
 
-
-        for (int i = 0; i < sizeOfArray; i++) {
+        for (int i = 0; i < sizeOfArray; i++)
             numList[i] = stdin.nextInt();
-            indexes[i] = i;
-        }
 
-        partition(numList, indexes);
+        quickSort(numList, 0, sizeOfArray - 1);
 
         stdin.close();
     }
-
 
 }
