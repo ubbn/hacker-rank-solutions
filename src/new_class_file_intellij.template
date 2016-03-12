@@ -1,0 +1,14 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+import java.util.Scanner;
+
+#parse("File Header.java")
+public class ${NAME} {
+    public static void main(String[] args) {
+        Scanner stdin = new Scanner(System.in);
+        int testCases = stdin.nextInt();
+
+
+        stdin.close();    
+    }
+}
