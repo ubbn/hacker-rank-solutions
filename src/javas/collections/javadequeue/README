@@ -1,0 +1,48 @@
+In computer science, a double-ended queue (dequeue, often abbreviated to deque, pronounced deck) is an abstract data type that generalizes a queue, for which elements can be added to or removed from either the front (head) or back (tail).
+
+Deque interfaces can be implemented using various types of collections such as LinkedList or ArrayDeque classes. For example, deque can be declared as:
+
+Deque deque = new LinkedList<>();
+or
+Deque deque = new ArrayDeque<>();
+You can find more details about Deque here.
+
+In this problem, you are given NN integers. You need to find the maximum number of unique integers among all the possible contiguous subarrays of size MM.
+
+Note: Time limit is 33 second for this problem.
+
+Input Format
+
+The first line of input contains two integers NN and MM: representing the total number of integers and the size of the subarray, respectively. The next line contains NN space separated integers.
+
+Constraints
+
+1≤N≤1000001≤N≤100000
+1≤M≤1000001≤M≤100000
+M≤NM≤N
+The numbers in the array will range between [0,10000000][0,10000000].
+
+Output Format
+
+Print the maximum number of unique integers among all possible contiguous subarrays of size MM.
+
+Sample Input
+
+6 3
+5 3 5 2 3 2
+Sample Output
+
+3
+Explanation
+
+In the sample testcase, there are 4 subarrays of contiguous numbers.
+
+s1=⟨5,3,5⟩s1=⟨5,3,5⟩ - Has 22 unique numbers.
+
+s2=⟨3,5,2⟩s2=⟨3,5,2⟩ - Has 33 unique numbers.
+
+s3=⟨5,2,3⟩s3=⟨5,2,3⟩ - Has 33 unique numbers.
+
+s4=⟨2,3,2⟩s4=⟨2,3,2⟩ - Has 22 unique numbers.
+
+In these subarrays, there are 2,3,3,22,3,3,2 unique numbers, respectively. The maximum amount of unique numbers among all possible contiguous subarrays is 33.
