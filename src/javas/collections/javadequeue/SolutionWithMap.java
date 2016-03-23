@@ -11,29 +11,36 @@ public class SolutionWithMap {
         Deque<Integer> deque = new ArrayDeque<>();
         int n = stdin.nextInt();
         int m = stdin.nextInt();
-        int maxLength = 0;
-        int count = 0;
         Map<Integer, Integer> storage = new Hashtable<>();
-        int startIndex = 0;
+        int maxLength = 0;
+        Integer count;
 
         for (int i = 0; i < n; i++) {
             int num = stdin.nextInt();
-            Integer tmp = storage.get(num);
-            if (tmp != null && tmp > startIndex){
-                startIndex = tmp + 1;
-                count = i - startIndex;
+            deque.addLast(num);
+
+            if (i >= m){
+                int first = deque.pollFirst();
+                count = storage.get(first);
+                if (count == null)
+                    storage.put(num, 1);
+                else if (count > 1)
+                    storage.put(first, count-1);
+                else
+                    storage.remove(first);
             }
-            count++;
-            storage.put(num, i);
 
-            if (count > maxLength)
-                maxLength = count;
+            count = storage.get(num);
+            if (count == null)
+                storage.put(num, 1);
+            else
+                storage.put(num, count+1);
 
-            if (maxLength >= m)
-                break;
+            if (storage.size() > maxLength)
+                maxLength = storage.size();
         }
-        System.out.println(maxLength);
 
+        System.out.println(maxLength);
         stdin.close();
     }
 }
