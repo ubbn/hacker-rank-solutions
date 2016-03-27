@@ -1,6 +1,7 @@
 package javas.collections.java1darrayhard;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Created by buyan on 3/25/16.
@@ -30,20 +31,27 @@ public class Solution {
                 return true;
             else if (position + jumpStep >= a.length)
                 return true;
-            else if (a[position + jumpStep] == 0)
+            else if (a[position + jumpStep] == 0) {
                 canJumpOut = canJumpOut(a, true, position + jumpStep, jumpStep);
+
+                // One step backward
+                if (canJumpOut)
+                    return true;
+
+                Stack<Integer> possibleBackOnes = new Stack<>();
+                int i = position + jumpStep - 1;
+                while(i > position && a[i] == 0){
+                    possibleBackOnes.add(i--);
+                }
+
+
+
+
+            }
             else
                 canJumpOut = false;
 
-            // One step backward
-            if (canJumpOut)
-                return true;
-            else if (position - 1 < 0)
-                return false;
-            else if (a[position - 1] == 0)
-                return canJumpOut(a, false, position - 1, jumpStep);
-            else
-                return false;
+            return canJumpOut;
         }
     }
 
@@ -55,6 +63,7 @@ public class Solution {
             int n = stdin.nextInt();
             int m = stdin.nextInt();
             int a[] = new int[n];
+            int visited[] = new int[n];
 
             for (int i = 0; i < n; i++)
                 a[i] = stdin.nextInt();
