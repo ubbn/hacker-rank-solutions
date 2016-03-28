@@ -1,55 +1,30 @@
 package javas.collections.java1darrayhard;
 
 import java.util.Scanner;
-import java.util.Stack;
 
 /**
  * Created by buyan on 3/25/16.
  */
 public class Solution {
-    static boolean canJumpOut(int a[], boolean movingForward, int position, int jumpStep){
-        System.out.println(position);
+    static boolean canJumpOut(int a[], int visited[], boolean movingForward, int position, int jumpStep){
         if (position >= a.length)
             return true;
-        else if (a[position] == 1 || position < 0)
+        else if (position < 0 || a[position] == 1)
+            return false;
+        else if (visited[position] != 0 && movingForward)
             return false;
         else {
             boolean canJumpOut = false;
+            visited[position] = 1;
 
-            if (movingForward) {
-                // One step forward
-                if (position + 1 >= a.length)
-                    return true;
-                else if (a[position + 1] == 0)
-                    canJumpOut = canJumpOut(a, true, position + 1, jumpStep);
-                else
-                    canJumpOut = false;
-            }
+            if (movingForward)
+                canJumpOut = canJumpOut(a, visited, true, position + 1, jumpStep);
 
-            // Jumpstep forward
-            if (canJumpOut)
-                return true;
-            else if (position + jumpStep >= a.length)
-                return true;
-            else if (a[position + jumpStep] == 0) {
-                canJumpOut = canJumpOut(a, true, position + jumpStep, jumpStep);
+            if (!canJumpOut)
+                canJumpOut = canJumpOut(a, visited, true, position + jumpStep, jumpStep);
 
-                // One step backward
-                if (canJumpOut)
-                    return true;
-
-                Stack<Integer> possibleBackOnes = new Stack<>();
-                int i = position + jumpStep - 1;
-                while(i > position && a[i] == 0){
-                    possibleBackOnes.add(i--);
-                }
-
-
-
-
-            }
-            else
-                canJumpOut = false;
+            if (!canJumpOut)
+                canJumpOut = canJumpOut(a, visited, false, position - 1, jumpStep);
 
             return canJumpOut;
         }
@@ -68,7 +43,7 @@ public class Solution {
             for (int i = 0; i < n; i++)
                 a[i] = stdin.nextInt();
 
-            if (canJumpOut(a, true, 0, m))
+            if (canJumpOut(a, visited, true, 0, m))
                 System.out.println("YES");
             else
                 System.out.println("NO");
