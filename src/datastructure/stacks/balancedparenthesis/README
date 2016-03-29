@@ -1,0 +1,28 @@
+Given a sequence consisting of parentheses, determine whether the expression is balanced. A sequence of parentheses is balanced if every open parentheses can be paired uniquely with a closed parentheses that occurs after the former. Also, the interval between them must be balanced. You will be given three types of parentheses: (, {, and [.
+
+{[()]} - This is a balanced parentheses.
+{[(])} - This is not a balanced parentheses.
+Input Format
+
+The first line of input contains the number of test cases, TT. Each test case consists of a single line, SS, the sequence of parentheses.
+
+Constraints
+1≤T≤10001≤T≤1000
+1≤lens≤10001≤lens≤1000, where lenslens is the length of the sequence.
+Each character of the sequence will be one of {, }, (, ), [, ].
+
+Output Format
+
+For each test case, print on a new line "YES" if the parentheses are balanced. Otherwise, print "NO". Do not print the quotes.
+
+Sample Input
+
+3
+{[()]}
+{[(])}
+{{[[(())]]}}
+Sample Output
+
+YES
+NO
+YES
