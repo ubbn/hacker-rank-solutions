@@ -1,0 +1,54 @@
+In this problem, your task is to implement a simple text editor. Initially, a file contains an empty string SS. Your task is to perform QQ operations consisting of the following 44 types:
+
+append(W)(W) - Appends the string WW at the end of SS.
+erase(k)(k) - Erase the last kk character of SS.
+get(k)(k) - Returns the kthkth character of SS.
+undo()() - Undo the last not previously undone operation of type 11 or 22, so it reverts SS to the state before that operation.
+Constraints
+
+1≤Q≤1051≤Q≤105
+1≤k≤|S|1≤k≤|S|
+
+The sum of the lengths of all WW in the input ≤106≤106.
+All input characters are lowercase English letters.
+It is guaranteed that the sequence of input operation is possible to perform.
+
+Input Format
+
+The first line contains QQ, the number of operations.
+Each of the following QQ lines contains a single integer tt, denoting the type of operation listed in the problem statement. Then, tt is followed by the argument of the operation, if it has any, separated by a space.
+
+For example, if t=1t=1 then a single string WW follows. If t=2t=2 or 33, a single integer kk follows.
+
+Output Format
+
+For each operation of type 33, print a single line with the returned character of that operation.
+
+Sample Input
+
+9
+1 abc
+3 3
+2 3
+1 xy
+3 2
+4
+4
+3 1
+Sample Output
+
+c
+y
+a
+Explanation
+
+There are 99 operations. Initially, SS is empty.
+In the first operation, we append abcabc to SS.
+Then, we print its 3rd3rd character, which is cc at this point.
+Next, we erase its last 33 characters, abcabc.
+After that, we append xyxy to SS.
+SS becomes xyxy after these previous two modifications.
+Then, we are asked to return the 2nd2nd character of SS, which is yy.
+After that, we have to undo the last update to SS, so SS becomes empty.
+The next operation asks us to undo the update before that, so SS becomes abcabc again.
+Finally, we are asked to print its 1st1st character, which is aa at this point.
