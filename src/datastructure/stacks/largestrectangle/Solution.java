@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * Created by buyan on 4/3/16.
+ * Updated by buyan on 4/9/16.
  */
 public class Solution {
     public static void main(String[] args) {
@@ -14,62 +15,57 @@ public class Solution {
         for (int i = 0; i < n; i++)
             height[i] = stdin.nextInt();
 
-        findMaxRectangle(height);
-
+        System.out.println(findMaxRectangle(height));
         stdin.close();
     }
 
-    static void updateHeights(Map<Integer, Integer> heights, List<Integer> sortedHeights, int newHeight){
-        if (!heights.containsKey(newHeight))
-            heights.put(newHeight, 1);
+    static void storeCountOfHeight(Map<Integer, Integer> heights, int height, int count){
+        if (heights.containsKey(height))
+            count += heights.get(height);
 
-        for (int height : sortedHeights){
-            if (height <= newHeight){
-                heights.put(height, heights.get(height)+1);
-            }
-        }
+        heights.put(height, count);
     }
 
-    static void addHeight(List<Integer> sortedHeights, int value){
-        if (sortedHeights.contains(value))
-            return;
-
-        int i = sortedHeights.size() - 1;
-        while(i >= 0 && sortedHeights.get(i) > value)
-            --i;
-
-        sortedHeights.add(i+1, value);
-    }
-
-    static void findMaxRectangle(int[] height) {
+    static int findMaxRectangle(int[] height) {
         Stack<Integer> current = new Stack<>();
         Map<Integer, Integer> heights = new HashMap<>();
-        List<Integer> sortedHeights = new ArrayList<>();
+        int maxRectangle = 0;
 
-        for (int i = 0; i < height.length; i++) {
-            if (current.isEmpty()){
-                current.add(height[i]);
-                addHeight(sortedHeights, height[i]);
-                updateHeights(heights, sortedHeights, height[i]);
-            }
-            else {
-                int k = current.peek();
-                if (k == height[i])
-                    updateHeights(heights, sortedHeights, height[i]);
-                else if (k > height[i]){
-                    if (heights.containsKey(height[i]))
-                        heights.put(height[i], heights.get(height[i]) + 1);
-                    else
-                        heights.put(height[i], heights.get(height[i]) + 1);
-                    // TODO
-
-                }
-                else {
-                    current.add(height[i]);
-                    addHeight(sortedHeights, height[i]);
-                    updateHeights(heights, sortedHeights, height[i]);
-                }
-            }
+        if (height.length > 0){
+            current.push(height[0]);
+            storeCountOfHeight(heights, height[0], 1);
         }
+
+        for (int i = 1; i < height.length; i++) {
+            int k = current.peek();
+            if (k > height[i]){
+                int count = 0;
+                while (!current.isEmpty() && k > height[i]) {
+                    current.pop();
+                    count = heights.get(k);
+                    if (count * k > maxRectangle)
+                        maxRectangle = count * k;
+                    heights.put(k, 0);
+                    k = current.isEmpty() ? 0 : current.peek();
+                }
+                if (k < height[i]){
+                    current.push(height[i]);
+                    storeCountOfHeight(heights, height[i], count);
+                }
+            }
+            else if (k < height[i])
+                current.push(height[i]);
+
+            for(Integer uniqueHeight : current)
+                storeCountOfHeight(heights, uniqueHeight, 1);
+        }
+
+        for(Integer uniqueHeight : heights.keySet()) {
+            int temp = heights.get(uniqueHeight) * uniqueHeight;
+            if (temp > maxRectangle)
+                maxRectangle = temp;
+        }
+
+        return maxRectangle;
     }
 }
