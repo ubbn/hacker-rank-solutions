@@ -1,6 +1,5 @@
 package algorithms.implementation.kaprekarnumbers;
 
-import java.math.BigInteger;
 import java.util.Scanner;
 
 /**

@@ -1,9 +1,4 @@
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-import java.lang.reflect.*;
+package javas.advanced.singleton;
 
 /**
  * Created by buyan on 7/16/16.

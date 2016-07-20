@@ -100,6 +100,8 @@ public class Solution {
 
         // print after insert
         linkedList.Print(head);
+        
+        stdin.close();
     }
 }
 

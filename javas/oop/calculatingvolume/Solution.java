@@ -1,12 +1,8 @@
 package javas.oop.calculatingvolume;
 
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-import java.lang.reflect.*;
+import java.io.IOException;
 import java.security.Permission;
+import java.util.Scanner;
 
 
 /**
